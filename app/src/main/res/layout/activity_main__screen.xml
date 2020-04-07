@@ -22,11 +22,10 @@
         android:layout_width="220dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:textSize="25dp"
-
-        android:text="View Petiont"
         android:onClick="ViewP"
-        />
+
+        android:text="Manage Petiont"
+        android:textSize="25dp" />
 
     <Space
         android:layout_width="match_parent"

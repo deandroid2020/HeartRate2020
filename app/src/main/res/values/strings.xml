@@ -3,4 +3,11 @@
     <string name="person">TODO</string>
     <string name="patient_profile">Patient Profile</string>
     <string name="patientProfile">الملف الشخصي</string>
+    <string name="curentstatus">الوضع الحالي</string>
+    <string name="bpm">BPM</string>
+    <string name="rate">90-100</string>
+    <string name="logout">LogOut</string>
+    <string name="background" />
+    <string name="rateh">rate</string>
+    <string name="statvalueh">طبيعي</string>
 </resources>

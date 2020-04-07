@@ -1,59 +1,63 @@
 package com.example.heartrate2020;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.wifi.hotspot2.PasspointConfiguration;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
-import java.net.PasswordAuthentication;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.heartrate2020.My_Acts.DrPage;
+import com.example.heartrate2020.My_Acts.LogIn;
+import com.example.heartrate2020.My_Acts.PatientPage;
 
 public class MainActivity extends AppCompatActivity {
 
-    String UserName = "reem";
-    String Passcode = "102030";
-    EditText passwordtext;
-    EditText usertext;
-
-
-
+    Session session ;
+    Handler handler ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.loginbutton);
-        passwordtext = findViewById(R.id.passwordinput);
-        usertext = findViewById(R.id.userinput);
+        session =new  Session(getApplicationContext());
 
+        handler = new Handler();
 
-        //creating static usernames and passwords
+        Log.d ("D" , "Before");
 
-        button.setOnClickListener(new View.OnClickListener() {
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
+            public void run() {
 
-
-                if (UserName.equals(usertext.getText().toString()) && Passcode.equals(passwordtext.getText().toString()))
-
+                Log.d ("D" , "After");
+                if(  session.getSaved() == false)
                 {
-                    Intent intent = new Intent(MainActivity.this ,Main_Screen.class);
-                    startActivity(intent);
+                    session.LogOut();
+                    startActivity(new Intent(getApplicationContext(), LogIn.class));
+                    Log.d ("D" , "Login");
                 }
+                else {
+                    if(session.getType().equals("P")){
+                        startActivity(new Intent(getApplicationContext(), PatientPage.class));
+                    }
+                    if (session.getType().equals("D")){
 
-                else
-                  Toast.makeText(getApplicationContext(),"User Name Or password is not corect!!",Toast.LENGTH_LONG).show();
-
-
+                        startActivity(new Intent(getApplicationContext(), DrPage.class));
+                    }
+                }
             }
-        });
+        },1000);
+        Log.d ("D" , "%0000");
+        }
 
-
-
-    }
 }
+
+
+
+
+
+
+
