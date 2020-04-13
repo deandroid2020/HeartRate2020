@@ -92,7 +92,7 @@ public class LogIn extends AppCompatActivity {
                                     startActivity(new Intent(getApplicationContext(), PatientPage.class));
                                 }
                                 if (session.getType().equals("D")) {
-
+                                    session.setMemberId(2000);
                                     startActivity(new Intent(getApplicationContext(), DrPage.class));
                                 }
                             }
@@ -106,9 +106,6 @@ public class LogIn extends AppCompatActivity {
 
         });
     }
-
-
-
 
 
 

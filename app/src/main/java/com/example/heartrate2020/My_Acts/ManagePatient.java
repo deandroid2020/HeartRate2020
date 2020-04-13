@@ -1,17 +1,21 @@
 package com.example.heartrate2020.My_Acts;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-
 import com.example.heartrate2020.CustomItemClickListener;
 import com.example.heartrate2020.Model.Pationt;
 import com.example.heartrate2020.MyAdaptors.PatientListAdaptor;
 import com.example.heartrate2020.R;
+import com.example.heartrate2020.Session;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,25 +26,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagePatient extends AppCompatActivity {
+ImageView patientadd;
 
-    RecyclerView recyclerView;
+RecyclerView recyclerView;
     PatientListAdaptor patientListAdaptor;
     List <Pationt>    pationtList =new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String TAG="----";
+    Session session;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_patient);
+session=new Session(getApplicationContext());
 
+        patientadd=findViewById(R.id.addnewwbtn);
+
+        patientadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext() , AddPatient.class));
+            }
+        });
 
         recyclerView =findViewById(R.id.listofpatient);
+
 patientListAdaptor= new PatientListAdaptor(getApplicationContext(), pationtList, new CustomItemClickListener() {
     @Override
     public void OnItemClick(Pationt p) {
 
+        Intent intent = new Intent(getApplicationContext(),PatientProfile.class);
+        intent.putExtra("DocId",p.getDocID());
+        intent.putExtra("pname",p.getPation_Name());
+        intent.putExtra("Age",p.getPatientage());
+        intent.putExtra("address",p.getPAddress());
+        intent.putExtra("nationality",p.getPnationality());
+        intent.putExtra("emr_name",p.getEmrName());
+        intent.putExtra("emr_number",p.getEmrNumber());
+        startActivity(intent);
 
 
     }
@@ -48,23 +75,27 @@ patientListAdaptor= new PatientListAdaptor(getApplicationContext(), pationtList,
 
 
 });
+
         GridLayoutManager gridLayoutManager =new GridLayoutManager(getApplicationContext(),4);
 
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(patientListAdaptor);
-/*
-Pationt p = new Pationt();
-p.setPation_Name("Moooh");
-pationtList.add(p);
-patientListAdaptor.notifyDataSetChanged();
-*/
 
                 getpatient();
 
-    }
 
 
-    public void getpatient() {
+
+    }//end OnCreate
+/*
+public void viewpprofile (View view){
+
+    Intent intent = new Intent(ManagePatient.this , PatientProfile.class);
+    startActivity(intent);
+
+}
+*/
+public void getpatient() {
 
         db.collection("patient")
                 .get()
@@ -73,22 +104,28 @@ patientListAdaptor.notifyDataSetChanged();
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful())
                         {
-                            if (  task.getResult().isEmpty())
-                                Log.d(TAG,"HHHHHHH");
                             Pationt p;
                             for (QueryDocumentSnapshot document : task.getResult())
                             {
-                                Log.d(TAG, "======================>" + document.getId());
-                                p= new Pationt();
-                                p.setPation_Name(document.get("pname").toString());
-                              /*  p.setPatientage(Integer.parseInt(document.get("age").toString()));
-                                p.setPAddress(document.get("address").toString());
-                                p.setPnationality(document.get("nationality").toString());
-                                p.setEmrName(document.get("emr_name").toString());
-                           */ //    p.setEmrNumber(Integer.parseInt(document.get("emr_number").toString()));
 
-                                pationtList.add(p);
-                                patientListAdaptor.notifyDataSetChanged();
+                                if (Integer.valueOf(document.get("DrId").toString())==session.getMemberId()){
+
+                                    Log.d(TAG, "======================>" + document.getId());
+                                    p= new Pationt();
+                                    p.setPation_Name(document.get("pname").toString());
+                                    p.setPatientage(Integer.valueOf(document.get("Age").toString()));
+                                    p.setPAddress(document.get("address").toString());
+                                    p.setPnationality(document.get("nationali5ty").toString());
+                                    p.setEmrName(document.get("emr_name").toString());
+                                    p.setDocID(document.getId().toString());
+                                    p.setEmrNumber(Integer.valueOf(document.get("emr_number").toString()));
+
+                                    pationtList.add(p);
+                                    patientListAdaptor.notifyDataSetChanged();
+
+
+
+                                }
 
 
                                 //     String s  = document.get("").toString();
@@ -98,10 +135,6 @@ patientListAdaptor.notifyDataSetChanged();
                             Log.w(TAG, "000000000000000000000000000Error getting documents.", task.getException());
                         }
                     }
-                });
-
-
-
-
-    }
+                });//end addOnCompleteListener
+    }//end getpaitent
 }

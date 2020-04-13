@@ -10,7 +10,15 @@ public class Pationt {
     private String Pnationality;
     private String EmrName;
     private int EmrNumber;
+    private String DocID;
 
+    public String getDocID() {
+        return DocID;
+    }
+
+    public void setDocID(String docID) {
+        DocID = docID;
+    }
 
     public int getPationt_ID() {
         return Pationt_ID;

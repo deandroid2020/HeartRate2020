@@ -1,6 +1,5 @@
 package com.example.heartrate2020.My_Acts;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,21 +22,21 @@ import java.util.Map;
 
 public class PatientProfile extends AppCompatActivity {
 
-    ImageView remove = findViewById(R.id.premove), edit;
-    EditText id, pname , age , address , nationality,emername,emernumber;
-    TextView done;
+  ImageView remove ,edit;
+    EditText /*id,*/ pname , age , address , nationality,emername,emernumber;
+    TextView done,camcel;
     String DocId;
-
-
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     String mymesg;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p_detials);
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.patientprofile);
+
+        camcel=findViewById(R.id.textcancle);
         done =findViewById(R.id.textdone);
         pname=findViewById(R.id.editTextpname);
         age=findViewById(R.id.editTextage);
@@ -45,39 +44,50 @@ public class PatientProfile extends AppCompatActivity {
         nationality=findViewById(R.id.editTextnatiunality);
         emername=findViewById(R.id.emrname);
         emernumber=findViewById(R.id.emrmobile);
-        edit=findViewById(R.id.pedit);
+         remove = findViewById(R.id.premove);
+         edit = findViewById(R.id.pedit);
 
         Intent intent = getIntent();
 
-        DocId = intent.getStringExtra("DocId");
 
+
+        DocId = intent.getStringExtra("DocId");
         pname.setText(intent.getStringExtra("pname"));
-        age.setText(intent.getStringExtra("age"));
+        age.setText(String.valueOf(intent.getIntExtra("Age",0)));
         address.setText(intent.getStringExtra("address"));
         nationality.setText(intent.getStringExtra("nationality"));
-        emername.setText(intent.getStringExtra("emr name"));
-        emernumber.setText(intent.getStringExtra("emr number"));
+        emername.setText(intent.getStringExtra("emr_name"));
+        emernumber.setText(String.valueOf(intent.getIntExtra("emr_number",0)));
 
 
-        /*
-        // To Delete An patient
+
+        pname.setEnabled(false);
+        age.setEnabled(false);
+        address.setEnabled(false);
+        nationality.setEnabled(false);
+        emername.setEnabled(false);
+        emernumber.setEnabled(false);
+
+        // To Delete a patient
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                db.collection("Patient").document(DocId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                db.collection("patient").document(DocId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
                         Toast.makeText(getApplicationContext() , "Deleted" , Toast.LENGTH_LONG).show();
 
-                        Notification notification= new Notification(emp_name.getText().toString().trim());
-
+                       // Notification notification= new Notification(emp_name.getText().toString().trim());
+/*
                         // Add a new document with a generated id.
                         Map<String, Object> data = new HashMap<>();
                         data.put("name", "patent Profile Has Been Removed "+notification.getMsg());
                         data.put("date", notification.getDate());
                         data.put("time", notification.getTimenote());
+*/
+                        Map<String, Object> data = new HashMap<>();
 
                         db.collection("Updates").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
@@ -92,49 +102,45 @@ public class PatientProfile extends AppCompatActivity {
                                     }
                                 });
 
-                        Intent intent = new Intent(getApplicationContext(), ManageEmployee.class);
+                        Intent intent = new Intent(getApplicationContext(), ManagePatient.class);
                         startActivity(intent);
 
                     }
-                });
+                } );
 
             }
         });
+
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                DocumentReference washingtonRef = db.collection("Employee").document(DocId);
+                DocumentReference washingtonRef = db.collection("patient").document(DocId);
 
                 final Map<String, Object> data = new HashMap<>();
-                data.put("pname", .pname().toString().trim());
+                data.put("pname", pname.getText().toString().trim());
                 data.put("Age", age.getText().toString().trim());
                 data.put("address", address.getText().toString().trim());
                 data.put("nationali5ty", nationality.getText().toString().trim());
-                data.put("emr name", emername.getText().toString().trim());
-                data.put("emr number", emernumber.getText().toString().trim());
+                data.put("emr_name", emername.getText().toString().trim());
+                data.put("emr_number", emernumber.getText().toString().trim());
 
                 washingtonRef.update(data).addOnSuccessListener(new OnSuccessListener<Void>()
                 {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        Toast.makeText(getApplicationContext() , "Employee Data successfully updated!" , Toast.LENGTH_LONG).show();
-                        mymesg="paient profile has been modfied";
+                        Toast.makeText(getApplicationContext() , "Patent Data successfully updated!" , Toast.LENGTH_LONG).show();
+                        mymesg="employ profile has been modfied";
 
-                        pname.setEnabled(false);
-                        age.setEnabled(false);
-                        address.setEnabled(false);
-                        nationality.setEnabled(false);
-                        emername.setEnabled(false);
-                        emernumber.setEnabled(false);
-
+                        startActivity(new Intent(getApplicationContext() , ManagePatient.class));
+/*
                         Notification notification= new Notification(emp_name.getText().toString().trim());
 
                         // Add a new document with a generated id.
                         Map<String, Object> data = new HashMap<>();
-                        data.put("name", "patient Profile Has Been Updated "+notification.getMsg());
+                        data.put("name", "Employee Profile Has Been Updated "+notification.getMsg());
                         data.put("date", notification.getDate());
                         data.put("time", notification.getTimenote());
 
@@ -149,7 +155,7 @@ public class PatientProfile extends AppCompatActivity {
                                     public void onFailure(@NonNull Exception e) {
                                         //          Log.w(TAG, "Error adding document", e);
                                     }
-                                });
+                                });*/
 
 
                     }
@@ -175,8 +181,27 @@ public class PatientProfile extends AppCompatActivity {
                 nationality.setEnabled(true);
                 emername.setEnabled(true);
                 emernumber.setEnabled(true);
+
+
             }
-        });
-*/
+
+        }
+        );
+
+
+                camcel.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                pname.setEnabled(false);
+                                                age.setEnabled(false);
+                                                address.setEnabled(false);
+                                                nationality.setEnabled(false);
+                                                emername.setEnabled(false);
+                                                emernumber.setEnabled(false);
+
+                                            }
+                                        }
+
+                );
     }
 }

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".My_Acts.ManagePatient"></activity>
+        <activity android:name=".My_Acts.updatemyownprofile"></activity>
+        <activity android:name=".My_Acts.AddPatient" />
+        <activity android:name=".My_Acts.ManagePatient" />
         <activity android:name=".My_Acts.PatientPage" />
         <activity android:name=".My_Acts.LogIn" />
         <activity android:name=".My_Acts.DrPage" />
