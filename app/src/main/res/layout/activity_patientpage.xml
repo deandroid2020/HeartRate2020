@@ -79,17 +79,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-            android:src="@drawable/rateh"
-                android:contentDescription="@string/rateh"/>
-
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
 
 
@@ -149,8 +139,8 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:orientation="horizontal"
-             android:layout_weight="1
-"
+             android:weightSum="2"
+
              >
 
 
@@ -159,19 +149,13 @@
 
 
 
-             <ImageView
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:src="@drawable/myreport"
-                 android:layout_weight="1"
-                 />
 
 
 
 
              <ImageView
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent"
+                 android:layout_height="wrap_content"
                  android:layout_weight="1"
                  android:id="@+id/histrecored"
                  android:src="@drawable/historyrecord"/>
@@ -179,7 +163,7 @@
 
              <ImageView
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent"
+                 android:layout_height="wrap_content"
                  android:id="@+id/ownprofile"
                  android:layout_weight="1"
                  android:src="@drawable/myownprofile"/>

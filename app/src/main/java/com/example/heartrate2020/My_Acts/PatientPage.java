@@ -15,6 +15,7 @@ public class PatientPage extends AppCompatActivity {
 
     Session session;
 ImageView updatemyownp;
+ImageView btnhistory;
 
 
 
@@ -23,7 +24,14 @@ ImageView updatemyownp;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patientpage);
 
+btnhistory=findViewById(R.id.histrecored);
+btnhistory.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
+        startActivity(new Intent(getApplicationContext(),Historyrecoerds.class));
+    }
+});
 
         updatemyownp=findViewById(R.id.ownprofile);
 updatemyownp.setOnClickListener(new View.OnClickListener() {
