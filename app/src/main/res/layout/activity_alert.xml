@@ -20,14 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 android:orientation="horizontal"
-        android:weightSum="3"
+        android:weightSum="5"
         android:layout_gravity="center"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NAme"
+            android:text="Name"
             android:layout_weight="1"
 
             android:textSize="15sp"
@@ -36,10 +36,9 @@ android:orientation="horizontal"
               <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Heatr Rate"
+            android:text="Heart Rate"
             android:textSize="15sp"
                   android:layout_weight="1"
-
                   android:textStyle="bold"
             />
               <TextView
@@ -47,10 +46,31 @@ android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:text="Time"
                   android:layout_weight="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:layout_weight="1"
 
             android:textSize="16sp"
             android:textStyle="bold"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:layout_weight="1"
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
 
 
 

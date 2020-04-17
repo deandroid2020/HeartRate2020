@@ -124,7 +124,6 @@ public void getpatient() {
                                     patientListAdaptor.notifyDataSetChanged();
 
 
-
                                 }
 
 

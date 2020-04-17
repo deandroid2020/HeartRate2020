@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class PatientProfile extends AppCompatActivity {
 
-  ImageView remove ,edit;
+  ImageView remove ,edit,reporticon;
     EditText /*id,*/ pname , age , address , nationality,emername,emernumber;
     TextView done,camcel;
     String DocId;
@@ -46,6 +46,7 @@ public class PatientProfile extends AppCompatActivity {
         emernumber=findViewById(R.id.emrmobile);
          remove = findViewById(R.id.premove);
          edit = findViewById(R.id.pedit);
+         reporticon=findViewById(R.id.reporrrrticon);
 
         Intent intent = getIntent();
 
@@ -203,5 +204,15 @@ public class PatientProfile extends AppCompatActivity {
                                         }
 
                 );
+
+
+        reporticon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), PReport.class);
+                startActivity(intent);
+            }
+        });
     }
 }

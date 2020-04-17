@@ -71,13 +71,13 @@
 
 
             <TextView
-                android:id="@+id/hrate"
+                android:id="@+id/patientpagehrate"
                 android:layout_width="255dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:text="@string/rate"
+                android:text="0"
                 android:textAlignment="center"
                 android:textSize="60dp"
                 android:textStyle="bold" />
@@ -101,12 +101,12 @@
 
 
         <TextView
-            android:id="@+id/stavalue"
+            android:id="@+id/patientpagestavalue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/statvalueh"
+            android:text="no data"
             android:textAlignment="center"
             android:textSize="35sp"
             android:textStyle="bold"/>
