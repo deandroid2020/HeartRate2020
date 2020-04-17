@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.heartrate2020.R;
+import com.example.heartrate2020.Session;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -18,10 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class AddPatient extends AppCompatActivity {
 ImageView btnadd;
 TextView camcel;
+Session session;
     EditText /*id,*/ pname , age , address , nationality,emername,emernumber;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -54,6 +57,8 @@ TextView camcel;
                 data.put("nationali5ty", nationality.getText().toString().trim());
                 data.put("emr_name", emername.getText().toString().trim());
                 data.put("emr_number", emernumber.getText().toString().trim());
+                data.put("DrId","2000");
+                data.put("PId", randomnumber());
 
 
                         db.collection("patient").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -70,6 +75,10 @@ TextView camcel;
                                     }
                                 });
 
+
+
+
+
             }
         });//end of addpatientbtnlisner
 
@@ -77,4 +86,14 @@ TextView camcel;
     }
 
 
+    private String randomnumber()
+    {
+        int[] s = {new Random().nextInt(9), new Random().nextInt(9), new Random().nextInt(9), new Random().nextInt(9)};
+        String t = "";
+        for (int i = 0; i < s.length; i++) {
+            t = t + s[i];
+        }
+        return t;
+    }
 }
+

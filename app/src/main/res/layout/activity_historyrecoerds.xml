@@ -37,6 +37,8 @@
     android:textSize="40sp"/>
 
 
+
+
         <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -54,6 +56,39 @@
     </LinearLayout>
 
 
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+
+        >
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="day"
+            android:layout_weight="1"
+            android:id="@+id/edittime2"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="60-90 BPM"
+            android:layout_weight="1"
+            android:id="@+id/rateeday2"
+            android:textSize="20sp"/>
+
+
+
+    </LinearLayout>
 
 
     <LinearLayout
@@ -89,4 +124,38 @@
 
 
     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+
+        >
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="day"
+            android:layout_weight="1"
+            android:id="@+id/edittim1e2"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="60-90 BPM"
+            android:layout_weight="1"
+            android:id="@+id/rateeday22"
+            android:textSize="20sp"/>
+
+
+
+    </LinearLayout>
+
 </LinearLayout>

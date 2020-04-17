@@ -30,6 +30,7 @@ public class DrPage extends AppCompatActivity {
         setContentView(R.layout.activity_dr_page);
 
         Button alertbtn = findViewById(R.id.btnalert);
+        Button report = findViewById(R.id.reportbtn);
 
 
         alertbtn.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +47,14 @@ public class DrPage extends AppCompatActivity {
 
         session =new Session(getApplicationContext());
 
+report.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(DrPage.this , PReport.class);
+        startActivity(intent);
 
+    }
+});
 
     }
 
@@ -99,4 +107,8 @@ public class DrPage extends AppCompatActivity {
 //        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 //
 //    }
+
+
+
+
 }

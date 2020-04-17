@@ -51,6 +51,12 @@
         android:layout_weight="0.5" />
 
 
+    <Button
+        android:id="@+id/reportbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="report" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
