@@ -90,7 +90,7 @@ public class PatientProfile extends AppCompatActivity {
 */
                         Map<String, Object> data = new HashMap<>();
 
-                        db.collection("Updates").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        db.collection("patient").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 //          Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
@@ -133,7 +133,7 @@ public class PatientProfile extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
 
                         Toast.makeText(getApplicationContext() , "Patent Data successfully updated!" , Toast.LENGTH_LONG).show();
-                        mymesg="employ profile has been modfied";
+                        mymesg="patent profile has been modfied";
 
                         startActivity(new Intent(getApplicationContext() , ManagePatient.class));
 /*
@@ -170,7 +170,7 @@ public class PatientProfile extends AppCompatActivity {
                         });
 
             }
-        });
+        });//done is done
 
 
         edit.setOnClickListener(new View.OnClickListener() {

@@ -86,15 +86,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="2"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/peditTextpname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
 
-            />
 
         <TextView
             android:id="@+id/ptextViewpname"
@@ -104,9 +99,17 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textStyle="bold"
-            android:text="الآسم:"
+            android:text="Name:"
             android:textSize="30sp" />
 
+        <EditText
+            android:id="@+id/peditTextpname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_weight="1"
+
+            />
 
 
     </LinearLayout>
@@ -114,14 +117,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="2"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/peditTextage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
 
         <TextView
             android:id="@+id/ptextViewage"
@@ -131,9 +129,18 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textStyle="bold"
-            android:text="العمر:"
+            android:text="Age:"
             android:textSize="30sp" />
 
+
+
+        <EditText
+            android:id="@+id/peditTextage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            />
 
 
     </LinearLayout>
@@ -141,14 +148,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="2"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/peditTextaddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
+
 
         <TextView
             android:id="@+id/ptextViewaddress"
@@ -158,37 +161,46 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textStyle="bold"
-            android:text="العنوان:"
+            android:text="address:"
             android:textSize="30sp" />
 
-
+        <EditText
+            android:id="@+id/peditTextaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="2"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/peditTextnatiunality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
+
 
         <TextView
             android:id="@+id/textViewnatiunality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
-            android:layout_weight="1"
-
             android:gravity="start"
+            android:layout_weight="1"
             android:textStyle="bold"
-            android:text="الجنسية:"
+            android:text="Nationality:"
             android:textSize="30sp" />
 
+
+        <EditText
+            android:id="@+id/peditTextnatiunality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            />
 
     </LinearLayout>
 
@@ -216,7 +228,7 @@
             android:gravity="start"
             android:textStyle="bold"
             android:textColor="@android:color/holo_red_light"
-            android:text="@string/contacinfo"
+            android:text="Emergency Contact Info:"
             android:textSize="27sp" />
 
 
@@ -227,7 +239,7 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textStyle="bold"
-            android:text="@string/nnnn"
+            android:text="Name"
             android:textSize="20sp" />
 
 
@@ -253,7 +265,7 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textStyle="bold"
-            android:text="@string/emrcontactnumber"
+            android:text="Phone #"
             android:textSize="20sp" />
 
 
@@ -285,7 +297,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:gravity="center"
         android:text="Add New patient" />
 

@@ -25,6 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 
 public class updatemyownprofile extends AppCompatActivity {
@@ -71,6 +72,7 @@ public class updatemyownprofile extends AppCompatActivity {
         emername.setText(intent.getStringExtra("emr_name"));
         emernumber.setText(String.valueOf(intent.getIntExtra("emr_number",0)));
 
+//        Log.d("we got this",session.GetDacID());
 
 
         db.collection("patient").whereEqualTo("PId", "1000" ).get()
@@ -107,25 +109,26 @@ public class updatemyownprofile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DocumentReference washingtonRef = db.collection("patient").document(DocId);
 
-                final Map<String, Object> data = new HashMap<>();
-                data.put("pname", pname.getText().toString().trim());
-                data.put("Age", age.getText().toString().trim());
-                data.put("address", address.getText().toString().trim());
-                data.put("nationali5ty", nationality.getText().toString().trim());
-                data.put("emr_name", emername.getText().toString().trim());
-                data.put("emr_number", emernumber.getText().toString().trim());
+                        DocumentReference washingtonRef = db.collection("patient").document(session.GetDacID());
 
-                washingtonRef.update(data).addOnSuccessListener(new OnSuccessListener<Void>()
-                {
-                    @Override
-                    public void onSuccess(Void aVoid) {
+                        final Map<String, Object> data = new HashMap<>();
+                        data.put("pname", pname.getText().toString().trim());
+                        data.put("Age", age.getText().toString().trim());
+                        data.put("address", address.getText().toString().trim());
+                        data.put("nationali5ty", nationality.getText().toString().trim());
+                        data.put("emr_name", emername.getText().toString().trim());
+                        data.put("emr_number", emernumber.getText().toString().trim());
 
-                        Toast.makeText(getApplicationContext() , "Patent Data successfully updated!" , Toast.LENGTH_LONG).show();
-                        mymesg="employ profile has been modfied";
+                        washingtonRef.update(data).addOnSuccessListener(new OnSuccessListener<Void>()
+                        {
+                            @Override
+                            public void onSuccess(Void aVoid) {
 
-                        startActivity(new Intent(getApplicationContext() , PatientPage.class));
+                                Toast.makeText(getApplicationContext() , "Patent Data successfully updated!" , Toast.LENGTH_LONG).show();
+                                mymesg="patent profile has been modfied";
+
+                                startActivity(new Intent(getApplicationContext() , PatientPage.class));
 /*
                         Notification notification= new Notification(emp_name.getText().toString().trim());
 
@@ -149,18 +152,19 @@ public class updatemyownprofile extends AppCompatActivity {
                                 });*/
 
 
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-
-                                Toast.makeText(getApplicationContext() , "Error updating document "+e.toString() , Toast.LENGTH_LONG).show();
                             }
-                        });
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
 
-            }
-        });//done
+                                        Toast.makeText(getApplicationContext() , "Error updating document "+e.toString() , Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
+                    }
+                });//done is done
+
 
 
 
@@ -202,6 +206,18 @@ public class updatemyownprofile extends AppCompatActivity {
     });
 
     }//end of OnCreate
+
+
+
+    private String randomnumber()
+    {
+        int[] s = {new Random().nextInt(9), new Random().nextInt(9), new Random().nextInt(9), new Random().nextInt(9)};
+        String t = "";
+        for (int i = 0; i < s.length; i++) {
+            t = t + s[i];
+        }
+        return t;
+    }
 }//end of updatemypown class
 
 

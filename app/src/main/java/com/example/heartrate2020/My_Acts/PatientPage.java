@@ -1,9 +1,11 @@
 package com.example.heartrate2020.My_Acts;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -56,9 +58,9 @@ HeartRateStatus=findViewById(R.id.patientpagestavalue);
 
 btnhistory=findViewById(R.id.histrecored);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar2);
 
 
 
@@ -89,6 +91,8 @@ updatemyownp.setOnClickListener(new View.OnClickListener() {
 
         UpdateReading(ReadingRate,latLng);
 
+
+
     }//end of create
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,13 +114,9 @@ updatemyownp.setOnClickListener(new View.OnClickListener() {
                 break;
 
             case R.id.menuAbout:
-                session.LogOut();
-                startActivity(new Intent(getApplicationContext(), LogIn.class));
-                //  Toast.makeText(this, "You are logging out", Toast.LENGTH_SHORT).show();
+                alertDialogDemo();
+
                 break;
-
-
-
 
         }
         return true;
@@ -171,5 +171,20 @@ updatemyownp.setOnClickListener(new View.OnClickListener() {
 
     }
 
+    public void alertDialogDemo() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("About us!");
+        builder.setMessage("This  app was desgined by Reem, Raniah , sundos,Mayar");
+        builder.setCancelable(true);
+        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Toast.makeText(getApplicationContext(), "Neutral button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();
+    }
 
 }

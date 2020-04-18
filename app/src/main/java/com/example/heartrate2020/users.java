@@ -7,6 +7,8 @@ public class users
 private String User_Name;
 private  String Password;
 private String User_Type;
+private String DacId;
+
 
 
     public users() {
@@ -38,8 +40,13 @@ private String User_Type;
         User_Type = user_Type;
     }
 
+    public String getDacId() {
+        return DacId;
+    }
 
-
+    public void setDacId(String dacId) {
+        DacId = dacId;
+    }
 }
 
 

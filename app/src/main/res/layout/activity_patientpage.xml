@@ -7,9 +7,12 @@
     tools:context=".My_Acts.PatientPage"
     android:orientation="vertical">
 
-<Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
 
 
     <LinearLayout
@@ -22,9 +25,8 @@
         android:orientation="vertical">
 
 
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+
 
         <ImageView
             android:layout_width="match_parent"

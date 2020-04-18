@@ -71,14 +71,14 @@ public class Session {
         return prefs.getString("Name" , "");
     }
 
-    public void setEmail(String Email)
+    public void setDacId(String DacID)
     {
-        prefs.edit().putString("Email" , Email).commit();
+        prefs.edit().putString("DacId" , DacID).commit();
     }
 
-    public String getEmail()
+    public String GetDacID()
     {
-        return  prefs.getString(  "Email" ,"");
+        return  prefs.getString(  "DacId" ,"");
     }
 
 }

@@ -121,6 +121,8 @@ public class LogIn extends AppCompatActivity {
                             usr.setUser_Name(document.get("User_Name").toString());
                             usr.setUser_Type(document.get("User_Type").toString());
                             usr.setPassword(document.get("Password").toString());
+                            usr.setDacId(document.getId().toString());
+                            session.setDacId(document.getId());
                         }
                     }
                 } else {

@@ -85,15 +85,16 @@ report.setOnClickListener(new View.OnClickListener() {
 
 
             case R.id.menuLogout:
+
                 session.LogOut();
-                alertDialogDemo();
+                startActivity(new Intent(getApplicationContext(), LogIn.class));
 
                 break;
                 
             case R.id.menuAbout:
-                session.LogOut();
-                startActivity(new Intent(getApplicationContext(), LogIn.class));
-              //  Toast.makeText(this, "You are logging out", Toast.LENGTH_SHORT).show();
+                alertDialogDemo();
+
+                //  Toast.makeText(this, "You are logging out", Toast.LENGTH_SHORT).show();
                 break;
 
 
@@ -111,10 +112,10 @@ report.setOnClickListener(new View.OnClickListener() {
 //    }
 
 
-private void alertDialogDemo() {
+public void alertDialogDemo() {
 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 builder.setTitle("About us!");
-builder.setMessage("This is app was desgined by Reem, Raniah , sundos,Myar");
+builder.setMessage("This  app was desgined by Reem, Raniah , sundos,Mayar");
 builder.setCancelable(true);
 builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
 
